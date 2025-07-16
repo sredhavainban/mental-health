@@ -209,4 +209,107 @@ This project is open source and available under the MIT License.
 ---
 
 **Remember**: You are not alone, and it's okay to ask for help. This chatbot is here to support you, but professional mental health care is always the best option for ongoing support. 
->>>>>>> 38f024e (Initial commit)
+
+---
+
+Here’s how to deploy your project on **Render**:
+
+---
+
+## 1. **Push Your Code to GitHub**
+You’ve already done this! ✅
+
+---
+
+## 2. **Create a New Web Service on Render**
+
+1. Go to [https://dashboard.render.com/](https://dashboard.render.com/) and log in.
+2. Click **New +** and select **Web Service**.
+3. **Connect your GitHub account** if you haven’t already.
+4. **Select your repository** (`sredhavainban/mental-health`).
+
+---
+
+## 3. **Configure Your Service**
+
+- **Name:** Choose a name for your service.
+- **Branch:** `main`
+- **Build Command:**  
+  ```
+  pip install -r requirements.txt
+  ```
+- **Start Command:**  
+  For Flask, if your main file is `app.py` and your Flask app is named `app`:
+  ```
+  gunicorn app:app
+  ```
+  (Change `app:app` if your file or app variable is named differently.)
+
+- **Python Version:**  
+  If you need a specific version, make sure you have a `runtime.txt` file in your repo (e.g., `python-3.10.13`).
+
+- **Root Directory:**  
+  Leave blank unless your code is in a subfolder.
+
+---
+
+## 4. **Deploy**
+
+- Click **Create Web Service**.
+- Render will clone your repo, install dependencies, and start your app.
+- You’ll see build logs and a public URL when it’s live.
+
+---
+
+## 5. **If You See Errors**
+- Copy the error message and paste it here. I’ll help you fix it!
+
+---
+
+### **Summary**
+1. Go to Render.com → New Web Service
+2. Connect your GitHub repo
+3. Set build/start commands
+4. Deploy!
+
+If you need help with the **Start Command** or see any errors, let me know your backend framework (Flask, FastAPI, etc.) and your main file name, and I’ll give you the exact command to use!
+
+---
+
+## How to Fix
+### 1. **Remove `pywin32` from `requirements.txt`**
+- Open your `requirements.txt` file.
+- Delete any line that says `pywin32` or `pywin32==310`.
+- Save the file.
+
+### 2. **Specify a Supported Python Version**
+- In your project root, create a file called `runtime.txt` (if it doesn't exist).
+- Add this line to `runtime.txt`:
+  ```
+  python-3.10.13
+  ```
+  or
+  ```
+  python-3.9.19
+  ```
+  (Choose a version supported by your dependencies.)
+
+### 3. **Commit and Push Your Changes**
+```bash
+git add requirements.txt runtime.txt
+git commit -m "Remove pywin32 and specify Python version"
+git push origin main
+```
+
+### 4. **Redeploy on Render**
+
+---
+
+## **Summary**
+- Remove `pywin32` from `requirements.txt`.
+- Add `runtime.txt` with a supported Python version (3.10 or 3.9).
+- Commit, push, and redeploy.
+
+---
+
+If you need help editing your files or want a sample `requirements.txt` or `runtime.txt`, let me know!
